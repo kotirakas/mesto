@@ -1,0 +1,1221 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Живое Место - терапевтические встречи</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Nunito:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      overflow-x: hidden;
+    }
+
+    :root {
+      --beige: #F5F0E8;
+      --beige-dark: #EDE5D8;
+      --pink: #F0D5CE;
+      --pink-deep: #E4B8AE;
+      --brown: #7D6245;
+      --brown-light: #D4BFA0;
+      --brown-dark: #7A5C38;
+      --text: #3D2B1F;
+      --text-light: #6B5B4F;
+      --text-lighter: #706255;
+      --white: #FDFBF8;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Nunito', sans-serif;
+      font-weight: 400;
+      color: var(--text);
+      background-color: var(--beige);
+      line-height: 1.7;
+      font-size: 17px;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 500;
+      line-height: 1.25;
+    }
+
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ── header ── */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 100;
+      background: rgba(245, 240, 232, 0.92);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(196, 168, 130, 0.15);
+      transition: box-shadow 0.3s ease;
+    }
+
+    header.scrolled {
+      box-shadow: 0 2px 20px rgba(61, 43, 31, 0.06);
+    }
+
+    .header-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 68px;
+    }
+
+    .logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 22px;
+      font-weight: 600;
+      color: var(--text);
+      text-decoration: none;
+      letter-spacing: 0.02em;
+    }
+
+    .logo span {
+      color: var(--brown-dark);
+    }
+
+    nav {
+      display: flex;
+      gap: 28px;
+      align-items: center;
+    }
+
+    nav a {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text-light);
+      text-decoration: none;
+      letter-spacing: 0.03em;
+      transition: color 0.25s ease;
+    }
+
+    nav a:hover {
+      color: var(--text);
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 12px 28px;
+      background: var(--brown);
+      color: var(--white);
+      font-family: 'Nunito', sans-serif;
+      font-size: 15px;
+      font-weight: 600;
+      text-decoration: none;
+      border-radius: 40px;
+      border: none;
+      cursor: pointer;
+      transition: background 0.3s ease, transform 0.3s ease;
+      letter-spacing: 0.02em;
+    }
+
+    .btn:hover {
+      background: var(--brown-dark);
+      transform: translateY(-1px);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--brown-dark);
+      border: 1.5px solid var(--brown);
+    }
+
+    .btn-outline:hover {
+      background: var(--brown);
+      color: var(--white);
+    }
+
+    /* ── hero ── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding-top: 68px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 0;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(61, 43, 31, 0.4);
+      z-index: 1;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 120px;
+      background: linear-gradient(to bottom, transparent, var(--beige));
+      z-index: 1;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 640px;
+    }
+
+    .hero h1 {
+      font-size: clamp(42px, 6vw, 72px);
+      margin-bottom: 24px;
+      color: var(--white);
+    }
+
+    .hero h1 em {
+      font-style: italic;
+      color: var(--pink);
+    }
+
+    .hero p {
+      font-size: 19px;
+      color: var(--beige);
+      margin-bottom: 40px;
+      max-width: 520px;
+      line-height: 1.8;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .hero .btn-outline {
+      color: var(--white);
+      border-color: rgba(253, 251, 248, 0.6);
+    }
+
+    .hero .btn-outline:hover {
+      background: rgba(253, 251, 248, 0.15);
+      color: var(--white);
+    }
+
+    /* ── sections ── */
+    section {
+      padding: 100px 0;
+      overflow-x: hidden;
+    }
+
+    section:nth-child(even) {
+      background: var(--white);
+    }
+
+    .section-label {
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--brown);
+      margin-bottom: 16px;
+    }
+
+    .section-title {
+      font-size: clamp(30px, 4vw, 44px);
+      margin-bottom: 28px;
+    }
+
+    .section-text {
+      font-size: 17px;
+      color: var(--text-light);
+      max-width: 640px;
+      line-height: 1.85;
+    }
+
+    .section-text p + p {
+      margin-top: 18px;
+    }
+
+    /* ── about ── */
+    .about-intro {
+      margin-bottom: 72px;
+      margin-left: calc(-50vw + 50%);
+      margin-right: calc(-50vw + 50%);
+      padding-left: calc(50vw - 50%);
+      padding-right: calc(50vw - 50%);
+    }
+
+    .about-intro .section-text {
+      max-width: none;
+    }
+
+    .about-us {
+      margin-bottom: 64px;
+      margin-left: calc(-50vw + 50%);
+      margin-right: calc(-50vw + 50%);
+      padding-left: calc(50vw - 50%);
+      padding-right: calc(50vw - 50%);
+    }
+
+    .about-us .section-text {
+      max-width: none;
+    }
+
+    .topics-breakout {
+      margin-left: calc(-50vw + 50%);
+      margin-right: calc(-50vw + 50%);
+      padding-left: calc(50vw - 50%);
+      padding-right: calc(50vw - 50%);
+    }
+
+    .topics-breakout .topics-intro,
+    .topics-breakout .topics-closing {
+      max-width: none;
+    }
+
+    .why-breakout {
+      margin-left: calc(-50vw + 50%);
+      margin-right: calc(-50vw + 50%);
+      padding-left: calc(50vw - 50%);
+      padding-right: calc(50vw - 50%);
+    }
+
+    .why-breakout .why-text {
+      max-width: none;
+    }
+
+    .team {
+      display: flex;
+      flex-direction: column;
+      gap: 64px;
+    }
+
+    .team-member {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 40px;
+      align-items: start;
+    }
+
+    .team-member img {
+      width: 100%;
+      aspect-ratio: 3/4;
+      object-fit: cover;
+      border-radius: 12px;
+    }
+
+    .team-member h3 {
+      font-size: 26px;
+      margin-bottom: 6px;
+    }
+
+    .team-member .role {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--brown);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 16px;
+    }
+
+    .team-member p {
+      color: var(--text-light);
+      line-height: 1.8;
+    }
+
+    .team-link {
+      display: inline-block;
+      margin-top: 14px;
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--brown-dark);
+      text-decoration: none;
+      border-bottom: 1px solid var(--brown-dark);
+      transition: color 0.25s ease, border-color 0.25s ease;
+    }
+
+    .team-link:hover {
+      color: var(--brown);
+      border-color: var(--brown);
+    }
+
+    .team-member--reverse {
+      direction: rtl;
+    }
+
+    .team-member--reverse > * {
+      direction: ltr;
+    }
+
+    /* ── how it works ── */
+    .how-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: start;
+    }
+
+    .how-text {
+      font-size: 18px;
+      color: var(--text-light);
+      line-height: 1.85;
+      margin-bottom: 16px;
+    }
+
+    .how-note {
+      font-size: 15px;
+      color: var(--text-lighter);
+      font-style: italic;
+      margin-top: 12px;
+    }
+
+    /* ── video carousel ── */
+    .carousel {
+      position: relative;
+      width: 100%;
+      max-width: 300px;
+      justify-self: end;
+    }
+
+    .carousel-viewport {
+      overflow: hidden;
+      border-radius: 12px;
+      position: relative;
+    }
+
+    .carousel-track {
+      display: flex;
+      transition: transform 0.4s ease;
+      will-change: transform;
+    }
+
+    .carousel-slide {
+      min-width: 100%;
+      width: 100%;
+      flex-shrink: 0;
+      position: relative;
+      cursor: pointer;
+    }
+
+    .carousel-slide video {
+      width: 100%;
+      display: block;
+      border-radius: 12px;
+      object-fit: contain;
+      background: var(--beige-dark);
+    }
+
+    .play-btn {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      border: none;
+      background: rgba(253, 251, 248, 0.9);
+      color: var(--text);
+      font-size: 22px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 2;
+      transition: transform 0.25s ease, background 0.25s ease;
+      box-shadow: 0 2px 12px rgba(61, 43, 31, 0.15);
+    }
+
+    .play-btn:hover {
+      transform: translate(-50%, -50%) scale(1.08);
+      background: rgba(253, 251, 248, 1);
+    }
+
+    .play-btn.hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .mute-btn {
+      position: absolute;
+      bottom: 14px;
+      right: 14px;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      border: none;
+      background: rgba(253, 251, 248, 0.85);
+      color: var(--text);
+      font-size: 16px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 2;
+      transition: background 0.25s ease;
+    }
+
+    .mute-btn:hover {
+      background: rgba(253, 251, 248, 1);
+    }
+
+    .carousel-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: none;
+      background: rgba(253, 251, 248, 0.85);
+      color: var(--text);
+      font-size: 18px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 2;
+      transition: background 0.25s ease, opacity 0.25s ease;
+      opacity: 0;
+    }
+
+    .carousel:hover .carousel-btn {
+      opacity: 1;
+    }
+
+    .carousel-btn:hover {
+      background: rgba(253, 251, 248, 1);
+    }
+
+    .carousel-btn--prev {
+      left: 10px;
+    }
+
+    .carousel-btn--next {
+      right: 10px;
+    }
+
+    .carousel-indicators {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 16px;
+    }
+
+    .carousel-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      border: none;
+      background: var(--brown-light);
+      cursor: pointer;
+      transition: background 0.25s ease, transform 0.25s ease;
+      padding: 0;
+    }
+
+    .carousel-dot.active {
+      background: var(--brown-dark);
+      transform: scale(1.3);
+    }
+
+    /* ── what happens ── */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 36px 48px;
+      margin: 48px 0;
+    }
+
+    .feature-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+    }
+
+    .feature-icon {
+      font-size: 28px;
+      flex-shrink: 0;
+      line-height: 1;
+      margin-top: 2px;
+    }
+
+    .feature-label {
+      font-size: 17px;
+      font-weight: 500;
+      color: var(--text);
+    }
+
+    .photo-placeholder {
+      width: 100%;
+      height: 320px;
+      background: var(--beige-dark);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-lighter);
+      font-size: 15px;
+      margin-top: 48px;
+    }
+
+    /* ── for whom ── */
+    .whom-list {
+      list-style: none;
+      margin-top: 36px;
+      display: grid;
+      gap: 18px;
+    }
+
+    .whom-list li {
+      font-size: 18px;
+      color: var(--text);
+      padding-left: 28px;
+      position: relative;
+      line-height: 1.6;
+    }
+
+    .whom-list li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 10px;
+      width: 10px;
+      height: 10px;
+      background: var(--pink-deep);
+      border-radius: 50%;
+    }
+
+    /* ── topics ── */
+    .topics-intro {
+      font-size: 17px;
+      color: var(--text-light);
+      max-width: 640px;
+      line-height: 1.85;
+      margin-bottom: 36px;
+    }
+
+    .topics-list {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 36px;
+    }
+
+    .topics-list li {
+      padding: 10px 22px;
+      background: var(--beige-dark);
+      border-radius: 30px;
+      font-size: 15px;
+      color: var(--text);
+      font-weight: 500;
+    }
+
+    .topics-closing {
+      font-size: 16px;
+      color: var(--text-light);
+      max-width: 640px;
+      line-height: 1.85;
+      font-style: italic;
+    }
+
+    /* ── why ── */
+    .why-text {
+      font-size: 19px;
+      color: var(--text-light);
+      max-width: 600px;
+      line-height: 1.9;
+    }
+
+    .why-text em {
+      color: var(--text);
+      font-style: italic;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 21px;
+    }
+
+    /* ── reviews ── */
+    .reviews-list {
+      margin-top: 40px;
+      display: grid;
+      gap: 40px;
+    }
+
+    .review {
+      border-left: 2px solid var(--brown-light);
+      padding-left: 28px;
+    }
+
+    .review-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 20px;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+
+    .review-text {
+      font-size: 15px;
+      color: var(--text-light);
+      line-height: 1.8;
+    }
+
+    /* ── cta ── */
+    .cta-section {
+      background: linear-gradient(160deg, var(--pink) 0%, var(--beige) 100%);
+      text-align: center;
+      padding: 100px 24px;
+    }
+
+    .cta-section h2 {
+      font-size: clamp(30px, 4vw, 48px);
+      margin-bottom: 20px;
+    }
+
+    .cta-section p {
+      font-size: 18px;
+      color: var(--text-light);
+      max-width: 500px;
+      margin: 0 auto 40px;
+      line-height: 1.8;
+    }
+
+    /* ── footer ── */
+    footer {
+      background: var(--text);
+      color: var(--brown-light);
+      padding: 48px 24px;
+      text-align: center;
+    }
+
+    .footer-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 22px;
+      font-weight: 600;
+      color: var(--beige);
+      margin-bottom: 12px;
+    }
+
+    footer p {
+      font-size: 14px;
+      opacity: 0.6;
+    }
+
+    /* ── mobile nav ── */
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+    }
+
+    .menu-toggle span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--text);
+      margin: 5px 0;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+
+    /* ── responsive ── */
+    @media (max-width: 768px) {
+      nav {
+        position: fixed;
+        top: 68px;
+        left: 0;
+        width: 100%;
+        background: rgba(245, 240, 232, 0.98);
+        backdrop-filter: blur(10px);
+        flex-direction: column;
+        padding: 32px 24px;
+        gap: 20px;
+        transform: translateY(-120%);
+        transition: transform 0.35s ease;
+        box-shadow: 0 8px 24px rgba(61, 43, 31, 0.08);
+      }
+
+      nav.open {
+        transform: translateY(0);
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+
+      .team {
+        gap: 48px;
+      }
+
+      .team-member {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+
+      .team-member img {
+        max-width: 280px;
+        margin: 0 auto;
+        display: block;
+      }
+
+      .features-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 24px 32px;
+      }
+
+      .how-layout {
+        grid-template-columns: 1fr;
+        gap: 36px;
+      }
+
+      .about-intro,
+      .about-us,
+      .topics-breakout,
+      .why-breakout {
+        margin-left: 0;
+        margin-right: 0;
+        padding-left: 24px;
+        padding-right: 24px;
+      }
+
+
+      .team-member--reverse {
+        direction: ltr;
+      }
+
+      .carousel {
+        max-width: 300px;
+        justify-self: center;
+      }
+
+      .carousel-btn {
+        opacity: 1;
+        width: 34px;
+        height: 34px;
+        font-size: 15px;
+      }
+
+      .carousel-slide video {
+      }
+
+      section {
+        padding: 72px 0;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .features-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .carousel {
+        max-width: 100%;
+      }
+
+      .hero-actions {
+        flex-direction: column;
+      }
+
+      .hero-actions .btn {
+        text-align: center;
+      }
+    }
+
+    /* ── fade-in animation ── */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+
+  <header id="header">
+    <div class="container header-inner">
+      <a href="#" class="logo">Живое <span>Место</span></a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Меню">
+        <span></span><span></span><span></span>
+      </button>
+      <nav id="nav">
+        <a href="#about">О нас</a>
+        <a href="#how">Как проходит</a>
+        <a href="#topics">Темы</a>
+        <a href="#reviews">Отзывы</a>
+        <a href="#cta" class="btn">Записаться</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <img class="hero-bg" src="pic/fon.webp" alt="">
+    <div class="container hero-content">
+      <h1>Живое <em>Место</em></h1>
+      <p>Пространство, где можно быть собой, проживать свои чувства, исследовать себя и строить живой контакт с другими.</p>
+      <div class="hero-actions">
+        <a href="#cta" class="btn">Записаться на встречу</a>
+        <a href="#about" class="btn btn-outline">Узнать больше</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="container">
+      <div class="about-intro fade-in">
+        <p class="section-label">О проекте</p>
+        <h2 class="section-title">«Живое Место»</h2>
+        <div class="section-text">
+          <p>«Живое Место» - это проект, который мы создали, чтобы у людей появилось пространство для настоящих встреч с собой и другими.</p>
+          <p>Мы проводим терапевтические группы, арт-встречи, мастер-классы и выезды, объединённые одной идеей: самые важные изменения происходят там, где есть живой контакт, безопасность и возможность быть собой.</p>
+          <p>К нам приходят люди, которые хотят лучше понимать себя, проживать свои чувства, находить внутреннюю опору и чувствовать, что они не одни. Мы создаём атмосферу, в которой не нужно соответствовать, прятаться или казаться лучше. Здесь можно исследовать себя в своём темпе, получать поддержку, пробовать новое и уносить с собой не только яркие впечатления, но и опыт, который остаётся с вами в жизни.</p>
+        </div>
+      </div>
+
+      <div class="about-us fade-in">
+        <p class="section-label">О нас</p>
+        <div class="section-text">
+          <p>Мы, Анесса Комарова и Алёна Лазарева, практикующие психологи и ведущие проекта «Живое Место». Нас объединяет любовь к живому контакту, уважение к уникальности каждого человека и вера в то, что самые важные изменения происходят не через давление, а через безопасную встречу с собой и другими. Мы создаём пространство, в котором можно исследовать себя, получать новый опыт и чувствовать поддержку.</p>
+        </div>
+      </div>
+
+      <div class="team fade-in">
+        <div class="team-member team-member--reverse">
+          <img src="pic/kom.JPG" alt="Анесса Комарова">
+          <div>
+            <h3>Анесса Комарова</h3>
+            <p class="role">Практикующий психолог, гештальт-терапевт</p>
+            <p>Выпускница Йоркского университета в Великобритании и Московского Гештальт Института.</p>
+            <p class="team-desc-full">В своей работе помогаю людям лучше понимать себя, свои чувства и отношения, создавая бережное пространство, где можно быть собой без страха оценки.</p>
+            <a href="https://www.b17.ru/anessa_komarova/" target="_blank" class="team-link">Подробнее обо мне</a>
+          </div>
+        </div>
+        <div class="team-member">
+          <img src="pic/laz.jpg" alt="Алёна Лазарева">
+          <div>
+            <h3>Алёна Лазарева</h3>
+            <p class="role">Практикующий психолог, арт-терапевт</p>
+            <p>Гештальт-терапевт, голосовой терапевт, супервизор и ведущая терапевтических групп.</p>
+            <p class="team-desc-full">В работе для меня особенно важны глубина, творчество и внимательное сопровождение человека в его поиске внутренней опоры, проявленности и живого контакта с собой.</p>
+            <a href="https://alenalazareva.vercel.app/" target="_blank" class="team-link">Подробнее обо мне</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="how">
+    <div class="container fade-in">
+      <div class="how-layout">
+        <div class="how-text-wrap">
+          <p class="section-label">Формат</p>
+          <h2 class="section-title">Как проходят встречи</h2>
+          <p class="how-text">Мы встречаемся в уютном психологическом центре «Дорога перемен» на Васильевском острове, садимся в круг, знакомимся и обсуждаем тему встречи.</p>
+          <p class="how-text">На каждой встрече есть тема, упражнения, творческие практики, время для разговора и возможность просто побыть рядом с другими.</p>
+          <p class="how-note">Никто не заставляет делиться тем, к чему вы не готовы. Вы сами выбираете, насколько активно участвовать.</p>
+        </div>
+        <div class="carousel" id="carousel">
+          <div class="carousel-viewport">
+            <div class="carousel-track" id="carouselTrack">
+              <div class="carousel-slide"><video src="video/video1.MOV" muted loop playsinline preload="metadata"></video><button class="play-btn" aria-label="Воспроизвести">&#9654;</button><button class="mute-btn" aria-label="Звук">&#128263;</button></div>
+              <div class="carousel-slide"><video src="video/video2.MOV" muted loop playsinline preload="metadata"></video><button class="play-btn" aria-label="Воспроизвести">&#9654;</button><button class="mute-btn" aria-label="Звук">&#128263;</button></div>
+              <div class="carousel-slide"><video src="video/video3.MOV" muted loop playsinline preload="metadata"></video><button class="play-btn" aria-label="Воспроизвести">&#9654;</button><button class="mute-btn" aria-label="Звук">&#128263;</button></div>
+              <div class="carousel-slide"><video src="video/video4.MOV" muted loop playsinline preload="metadata"></video><button class="play-btn" aria-label="Воспроизвести">&#9654;</button><button class="mute-btn" aria-label="Звук">&#128263;</button></div>
+              <div class="carousel-slide"><video src="video/video5.MP4" muted loop playsinline preload="metadata"></video><button class="play-btn" aria-label="Воспроизвести">&#9654;</button><button class="mute-btn" aria-label="Звук">&#128263;</button></div>
+            </div>
+          </div>
+          <button class="carousel-btn carousel-btn--prev" id="carouselPrev">&#8592;</button>
+          <button class="carousel-btn carousel-btn--next" id="carouselNext">&#8594;</button>
+          <div class="carousel-indicators" id="carouselDots"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="features">
+    <div class="container fade-in">
+      <p class="section-label">Атмосфера</p>
+      <h2 class="section-title">Что происходит на встречах</h2>
+      <div class="features-grid">
+        <div class="feature-item">
+          <span class="feature-icon">🕊</span>
+          <span class="feature-label">Живое общение</span>
+        </div>
+        <div class="feature-item">
+          <span class="feature-icon">🎨</span>
+          <span class="feature-label">Арт-терапия</span>
+        </div>
+        <div class="feature-item">
+          <span class="feature-icon">🌿</span>
+          <span class="feature-label">Телесные практики</span>
+        </div>
+        <div class="feature-item">
+          <span class="feature-icon">☕</span>
+          <span class="feature-label">Чай и уют</span>
+        </div>
+        <div class="feature-item">
+          <span class="feature-icon">💛</span>
+          <span class="feature-label">Поддержка группы</span>
+        </div>
+        <div class="feature-item">
+          <span class="feature-icon">✨</span>
+          <span class="feature-label">Новый опыт</span>
+        </div>
+      </div>
+      <div class="photo-placeholder">Фото с встреч</div>
+    </div>
+  </section>
+
+  <section id="whom">
+    <div class="container fade-in">
+      <p class="section-label">Для кого</p>
+      <h2 class="section-title">Это место для вас, если…</h2>
+      <ul class="whom-list">
+        <li>хочется лучше понимать себя</li>
+        <li>сложно говорить о своих чувствах</li>
+        <li>устали всё время справляться в одиночку</li>
+        <li>хочется встретить людей, рядом с которыми можно быть собой</li>
+        <li>интересно исследовать себя через творчество и общение</li>
+        <li>хочется замедлиться и выдохнуть</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="topics">
+    <div class="container">
+      <div class="topics-breakout fade-in">
+        <p class="section-label">Темы</p>
+        <h2 class="section-title">О чём наши встречи</h2>
+        <p class="topics-intro">На наших встречах мы исследуем самые разные стороны жизни человека. Не для того, чтобы найти «правильный ответ», а чтобы лучше понять себя, свои чувства и свои отношения с миром.</p>
+        <p class="topics-intro">Мы часто говорим о:</p>
+      <ul class="topics-list">
+        <li>отношениях с собой и другими</li>
+        <li>тревоге, стрессе и выгорании</li>
+        <li>самооценке и принятии себя</li>
+        <li>одиночестве и поиске близости</li>
+        <li>личных границах</li>
+        <li>стыде, вине и страхах</li>
+        <li>злости и других сложных чувствах</li>
+        <li>проявленности и уверенности</li>
+        <li>женственности и мужественности</li>
+        <li>поиске внутренней опоры</li>
+        <li>кризисах и жизненных изменениях</li>
+        <li>желаниях, смыслах и своём пути</li>
+      </ul>
+      <p class="topics-closing">Каждая встреча посвящена определённой теме, но самое ценное рождается в том, что происходит между людьми: в возможности услышать себя, встретиться с опытом других и обнаружить, что многие переживания гораздо ближе и понятнее, чем кажется.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="why">
+    <div class="container">
+      <div class="why-breakout fade-in">
+        <p class="section-label">Почему так</p>
+        <h2 class="section-title">Почему «Живое Место»?</h2>
+        <p class="why-text">Мы назвали проект так, потому что верим: каждому человеку иногда нужно место, где можно перестать играть роли, выдохнуть и встретиться с собой. Место, где есть <em>живой контакт</em>, <em>живые чувства</em> и <em>живые люди</em>.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="reviews">
+    <div class="container fade-in">
+      <p class="section-label">Отзывы</p>
+      <h2 class="section-title">Что говорят участники</h2>
+      <div class="reviews-list">
+        <div class="review">
+          <div class="review-name">Алексей</div>
+          <p class="review-text">Был на встрече про злость. Организаторы заблаговременно обо всём предупреждали, можно сказать «вели» к встрече. Она проходила в чистом и уютном месте рядом со ст. м. Василеостровская. Было легко найти, тем более, что организаторы позаботились и выслали заранее схему, как добраться. Для меня большим сюрпризом было, как по-разному агрессия выглядела у всех участников - чем и ценны такие встречи в том числе: узнать опыт «Другого». Лично для меня это был чуть ли не первый опыт такого «самовыражения». Очень нужный. Будем «расширять и углублять»!</p>
+        </div>
+        <div class="review">
+          <div class="review-name">Кристина</div>
+          <p class="review-text">Приходила на встречу про гнев. Было очень интересно, понравилось работать в группе. Создали настолько безопасное пространство, что получилось выплеснуть много гнева. Состояние после было бомбическое. Узнала полезные телесные упражнения. Прекрасно провела время!</p>
+        </div>
+        <div class="review">
+          <div class="review-name">Юлия</div>
+          <p class="review-text">Мне очень понравился творческий формат мастер-класса, что помогло погрузиться в процесс и позже проанализировать свои сильные стороны и зоны роста. Было очень ценно получить отзывы от других участниц и увидеть другие стратегии. Спасибо большое за такое классное мероприятие!</p>
+        </div>
+        <div class="review">
+          <div class="review-name">Екатерина</div>
+          <p class="review-text">Это была моя вторая встреча в формате арт-терапии. Формат классный и необычный, различный прикольный реквизит, возможность проявить себя и посмотреть, где у меня проблемные места и точки роста. Очень приятно, что достаточно много времени отводится обсуждению чувств, выслушивают всех участников. После встреч выходишь с пищей для размышлений!</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-section" id="cta">
+    <div class="container fade-in">
+      <h2>Запишитесь на встречу</h2>
+      <p>Выберите ближайшую встречу или группу и присоединяйтесь. Мы будем рады вас видеть.</p>
+      <a href="#" class="btn">Записаться</a>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-logo">Живое Место</div>
+    <p>Терапевтические встречи в Петербурге</p>
+  </footer>
+
+  <script>
+    const header = document.getElementById('header');
+    const menuToggle = document.getElementById('menuToggle');
+    const nav = document.getElementById('nav');
+
+    window.addEventListener('scroll', () => {
+      header.classList.toggle('scrolled', window.scrollY > 10);
+    });
+
+    menuToggle.addEventListener('click', () => {
+      nav.classList.toggle('open');
+    });
+
+    nav.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => nav.classList.remove('open'));
+    });
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.15 });
+
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+    // ── video carousel ──
+    const carousel = document.getElementById('carousel');
+    const track = document.getElementById('carouselTrack');
+    const slides = track.querySelectorAll('.carousel-slide');
+    const prevBtn = document.getElementById('carouselPrev');
+    const nextBtn = document.getElementById('carouselNext');
+    const dotsContainer = document.getElementById('carouselDots');
+    let current = 0;
+    let startX = 0;
+    let isDragging = false;
+
+    slides.forEach((_, i) => {
+      const dot = document.createElement('button');
+      dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
+      dot.addEventListener('click', () => goTo(i));
+      dotsContainer.appendChild(dot);
+    });
+
+    const dots = dotsContainer.querySelectorAll('.carousel-dot');
+
+    function goTo(index) {
+      const prevSlide = slides[current];
+      const prevVideo = prevSlide.querySelector('video');
+      const prevBtn = prevSlide.querySelector('.play-btn');
+      if (prevVideo) { prevVideo.pause(); prevVideo.currentTime = 0; }
+      if (prevBtn) prevBtn.classList.remove('hidden');
+
+      current = (index + slides.length) % slides.length;
+      track.style.transform = 'translateX(-' + (current * 100) + '%)';
+
+      dots.forEach((d, i) => d.classList.toggle('active', i === current));
+    }
+
+    prevBtn.addEventListener('click', () => goTo(current - 1));
+    nextBtn.addEventListener('click', () => goTo(current + 1));
+
+    // swipe support
+    const viewport = carousel.querySelector('.carousel-viewport');
+    viewport.addEventListener('touchstart', (e) => {
+      startX = e.touches[0].clientX;
+      isDragging = true;
+    }, { passive: true });
+
+    viewport.addEventListener('touchend', (e) => {
+      if (!isDragging) return;
+      isDragging = false;
+      const diff = startX - e.changedTouches[0].clientX;
+      if (Math.abs(diff) > 50) {
+        diff > 0 ? goTo(current + 1) : goTo(current - 1);
+      }
+    }, { passive: true });
+
+    // play/pause on click
+    slides.forEach(slide => {
+      const video = slide.querySelector('video');
+      const btn = slide.querySelector('.play-btn');
+      const muteBtn = slide.querySelector('.mute-btn');
+      slide.addEventListener('click', (e) => {
+        if (e.target.closest('.carousel-btn') || e.target.closest('.carousel-dot') || e.target.closest('.mute-btn')) return;
+        if (video.paused) {
+          video.play().catch(() => {});
+          btn.classList.add('hidden');
+        } else {
+          video.pause();
+          btn.classList.remove('hidden');
+        }
+      });
+      video.addEventListener('ended', () => btn.classList.remove('hidden'));
+      video.addEventListener('pause', () => btn.classList.remove('hidden'));
+      video.addEventListener('play', () => btn.classList.add('hidden'));
+
+      // mute toggle
+      muteBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        if (video.muted) {
+          video.muted = false;
+          video.removeAttribute('muted');
+          muteBtn.textContent = '\u{1F50A}';
+        } else {
+          video.muted = true;
+          video.setAttribute('muted', '');
+          muteBtn.textContent = '\u{1F507}';
+        }
+      });
+    });
+
+    // play video on active slide
+    const playObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        const video = entry.target.querySelector('video');
+        const btn = entry.target.querySelector('.play-btn');
+        if (!video) return;
+        if (entry.isIntersecting && entry.intersectionRatio > 0.7) {
+          // don't autoplay, just show play button
+        } else {
+          video.pause();
+          video.currentTime = 0;
+          btn.classList.remove('hidden');
+        }
+      });
+    }, { threshold: 0.7 });
+
+    slides.forEach(s => playObserver.observe(s));
+  </script>
+
+</body>
+</html>
