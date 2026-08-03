@@ -4,15 +4,21 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Живое Место — терапевтические встречи в Петербурге</title>
-  <meta name="description" content="Пространство, где можно быть собой, проживать свои чувства, исследовать себя и строить живой контакт с другими. Терапевтические группы, арт-встречи, мастер-классы в Петербурге.">
-  <meta property="og:title" content="Живое Место — терапевтические встречи">
-  <meta property="og:description" content="Пространство, где можно быть собой, проживать свои чувства, исследовать себя и строить живой контакт с другими.">
-  <meta property="og:url" content="https://mesto.vercel.app">
+  <meta name="description" content="Пространство, где можно быть собой, проживать свои чувства, исследовать себя и получать новый опыт живого контакта с другими. Терапевтические группы, арт-встречи, мастер-классы в Петербурге.">
+  <meta property="og:title" content="Живое Место — терапевтические встречи в Петербурге">
+  <meta property="og:site_name" content="Живое Место">
+  <meta property="og:description" content="Пространство, где можно быть собой, проживать свои чувства, исследовать себя и получать новый опыт живого контакта с другими. Терапевтические группы, арт-встречи, мастер-классы в Петербурге.">
+  <meta property="og:url" content="https://zhivoemesto.vercel.app">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="ru_RU">
-  <meta property="og:image" content="https://mesto.vercel.app/pic/fon.webp">
+  <meta property="og:image" content="https://zhivoemesto.vercel.app/pic/fon.webp">
+  <meta property="og:image:width" content="1280">
+  <meta property="og:image:height" content="640">
   <meta name="twitter:card" content="summary_large_image">
-  <link rel="canonical" href="https://mesto.vercel.app">
+  <meta name="twitter:title" content="Живое Место — терапевтические встречи в Петербурге">
+  <meta name="twitter:description" content="Пространство, где можно быть собой, проживать свои чувства, исследовать себя и получать новый опыт живого контакта с другими.">
+  <meta name="twitter:image" content="https://zhivoemesto.vercel.app/pic/fon.webp">
+  <link rel="canonical" href="https://zhivoemesto.vercel.app">
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png">
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
@@ -24,7 +30,61 @@
     "@type": "Organization",
     "name": "Живое Место",
     "description": "Пространство для терапевтических встреч, групп и арт-мероприятий в Петербурге.",
-    "url": "https://mesto.vercel.app"
+    "url": "https://zhivoemesto.vercel.app",
+    "image": "https://zhivoemesto.vercel.app/pic/fon.webp",
+    "telephone": "+79310011695",
+    "email": "ann.komarova@inbox.ru",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Санкт-Петербург",
+      "addressCountry": "RU"
+    },
+    "sameAs": [
+      "https://t.me/zhivoe_mesto_psy",
+      "https://t.me/anessa_kay",
+      "https://t.me/Sheiladeschain",
+      "https://vk.com/sheiladeschain"
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Анесса Комарова",
+    "jobTitle": "Психолог, гештальт-терапевт",
+    "image": "https://zhivoemesto.vercel.app/pic/kom.webp",
+    "url": "https://www.b17.ru/anessa_komarova/",
+    "telephone": "+79310011695",
+    "email": "ann.komarova@inbox.ru",
+    "worksFor": {
+      "@type": "Organization",
+      "name": "Живое Место"
+    },
+    "sameAs": [
+      "https://t.me/anessa_kay",
+      "https://vk.ru/anessa_komarova",
+      "https://wa.me/79310011695"
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Алёна Лазарева",
+    "jobTitle": "Психолог, гештальт-терапевт, супервизор",
+    "image": "https://zhivoemesto.vercel.app/pic/laz.webp",
+    "url": "https://alenalazareva.vercel.app/",
+    "worksFor": {
+      "@type": "Organization",
+      "name": "Живое Место"
+    },
+    "sameAs": [
+      "https://t.me/Sheiladeschain",
+      "https://vk.com/sheiladeschain",
+      "https://wa.me/message/HFYPA7MBRWETE1"
+    ]
   }
   </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -591,11 +651,23 @@
       color: var(--text);
     }
 
-    .features-photo {
-      width: 70%;
-      display: block;
+    .photo-carousel {
+      position: relative;
+      width: 100%;
+      max-width: 960px;
       margin: 48px auto 0;
+    }
+
+    .photo-carousel .carousel-slide img {
+      width: 100%;
+      display: block;
       border-radius: 12px;
+      object-fit: contain;
+      background: var(--beige-dark);
+    }
+
+    .photo-carousel .carousel-btn {
+      opacity: 1;
     }
 
     /* ── for whom ── */
@@ -696,6 +768,15 @@
       padding: 32px;
       display: flex;
       flex-direction: column;
+    }
+
+    .future-card-photo {
+      width: 50%;
+      margin: 0 auto 20px;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 12px;
+      display: block;
     }
 
     .future-card-title {
@@ -928,6 +1009,13 @@
       .contact-phone:hover {
         color: inherit;
       }
+      .photo-carousel .carousel-slide {
+        min-width: 50%;
+        width: 50%;
+      }
+      .photo-carousel .carousel-slide img {
+        padding: 6px;
+      }
     }
 
     .contact-icon {
@@ -1093,6 +1181,12 @@
         grid-template-columns: 1fr;
       }
 
+      .future-card-photo {
+        width: 100%;
+        height: auto;
+        object-fit: contain;
+      }
+
       .future-card-btn {
         width: 100%;
         text-align: center;
@@ -1164,9 +1258,10 @@
     </picture>
     <div class="container hero-content">
       <h1>Живое <em>Место</em></h1>
-      <p>Пространство, где можно быть собой, проживать свои чувства, исследовать себя и строить живой контакт с другими.</p>
+      <p>Пространство, где можно быть собой, проживать свои чувства, исследовать себя и получать новый опыт живого контакта с другими.</p>
       <div class="hero-actions">
         <a href="#future" class="btn">Наши ближайшие встречи</a>
+        <a href="https://t.me/zhivoe_mesto_psy" target="_blank" class="btn btn-outline">Подписаться на анонсы</a>
       </div>
     </div>
   </section>
@@ -1194,21 +1289,21 @@
 
       <div class="team fade-in">
         <div class="team-member team-member--reverse">
-          <img src="pic/kom.JPG" alt="Анесса Комарова">
+          <img src="pic/kom.webp" alt="Анесса Комарова">
           <div>
             <h3>Анесса Комарова</h3>
-            <p class="role">Практикующий психолог, гештальт-терапевт</p>
+            <p class="role">Психолог, гештальт-терапевт</p>
             <p>Выпускница Йоркского университета в Великобритании и Московского Гештальт Института.</p>
             <p class="team-desc-full">В своей работе помогаю людям лучше понимать себя, свои чувства и отношения, создавая бережное пространство, где можно быть собой без страха оценки.</p>
             <a href="https://www.b17.ru/anessa_komarova/" target="_blank" class="team-link">Подробнее обо мне</a>
           </div>
         </div>
         <div class="team-member">
-          <img src="pic/laz.jpg" alt="Алёна Лазарева">
+          <img src="pic/laz.webp" alt="Алёна Лазарева">
           <div>
             <h3>Алёна Лазарева</h3>
-            <p class="role">Практикующий психолог, арт-терапевт</p>
-            <p>Гештальт-терапевт, голосовой терапевт, супервизор и ведущая терапевтических групп.</p>
+            <p class="role">Психолог, гештальт-терапевт, супервизор</p>
+            <p>Арт-терапевт, голосовой терапевт и ведущая терапевтических групп.</p>
             <p class="team-desc-full">В работе для меня особенно важны глубина, творчество и внимательное сопровождение человека в его поиске внутренней опоры, проявленности и живого контакта с собой.</p>
             <a href="https://alenalazareva.vercel.app/" target="_blank" class="team-link">Подробнее обо мне</a>
           </div>
@@ -1275,7 +1370,24 @@
           <span class="feature-label">Новый опыт</span>
         </div>
       </div>
-      <img class="features-photo" src="pic/pic1.jpg" alt="Момент со встречи Живое Место">
+      <div class="photo-carousel" id="photoCarousel">
+        <div class="carousel-viewport">
+          <div class="carousel-track" id="photoCarouselTrack">
+            <div class="carousel-slide"><img src="pic/group1.webp" alt="Момент со встречи Живое Место"></div>
+            <div class="carousel-slide"><img src="pic/group2.webp" alt="Момент со встречи Живое Место"></div>
+            <div class="carousel-slide"><img src="pic/group3.webp" alt="Момент со встречи Живое Место"></div>
+            <div class="carousel-slide"><img src="pic/group4.webp" alt="Момент со встречи Живое Место"></div>
+            <div class="carousel-slide"><img src="pic/group5.webp" alt="Момент со встречи Живое Место"></div>
+            <div class="carousel-slide"><img src="pic/group6.webp" alt="Момент со встречи Живое Место"></div>
+            <div class="carousel-slide"><img src="pic/group7.webp" alt="Момент со встречи Живое Место"></div>
+            <div class="carousel-slide"><img src="pic/group8.webp" alt="Момент со встречи Живое Место"></div>
+            <div class="carousel-slide"><img src="pic/group9.webp" alt="Момент со встречи Живое Место"></div>
+          </div>
+        </div>
+        <button class="carousel-btn carousel-btn--prev" id="photoCarouselPrev">&#8592;</button>
+        <button class="carousel-btn carousel-btn--next" id="photoCarouselNext">&#8594;</button>
+        <div class="carousel-indicators" id="photoCarouselDots"></div>
+      </div>
     </div>
   </section>
 
@@ -1300,20 +1412,16 @@
         <p class="section-label">Темы</p>
         <h2 class="section-title">О чём наши встречи</h2>
         <p class="topics-intro">На наших встречах мы исследуем самые разные стороны жизни человека. Не для того, чтобы найти «правильный ответ», а чтобы лучше понять себя, свои чувства и свои отношения с миром.</p>
-        <p class="topics-intro">Мы часто говорим о:</p>
+        <p class="topics-intro">Темы, которые мы исследуем:</p>
       <ul class="topics-list">
-        <li>отношениях с собой и другими</li>
-        <li>тревоге, стрессе и выгорании</li>
-        <li>самооценке и принятии себя</li>
-        <li>одиночестве и поиске близости</li>
-        <li>личных границах</li>
-        <li>стыде, вине и страхах</li>
-        <li>злости и других сложных чувствах</li>
-        <li>проявленности и уверенности</li>
-        <li>женственности и мужественности</li>
-        <li>поиске внутренней опоры</li>
-        <li>кризисах и жизненных изменениях</li>
-        <li>желаниях, смыслах и своём пути</li>
+        <li>отношения с собой и другими</li>
+        <li>тревога, стресс, выгорание</li>
+        <li>самооценка и принятие себя</li>
+        <li>личные границы</li>
+        <li>страхи, которые мешают развитию</li>
+        <li>контакт со своими чувствами</li>
+        <li>проявленность и уверенность в себе</li>
+        <li>поиск внутренней опоры</li>
       </ul>
       <p class="topics-closing">Каждая встреча посвящена определённой теме, но самое ценное рождается в том, что происходит между людьми: в возможности услышать себя, встретиться с опытом других и обнаружить, что многие переживания гораздо ближе и понятнее, чем кажется.</p>
       </div>
@@ -1326,6 +1434,7 @@
       <h2 class="section-title">Наши будущие встречи</h2>
       <div class="future-grid">
         <div class="future-card">
+          <img class="future-card-photo" src="pic/vivoz.jpg" alt="Вывоз гнева">
           <h3 class="future-card-title">Вывоз гнева</h3>
           <p class="future-card-desc">Двухдневный выезд на Ладожское озеро, посвящённый исследованию своей злости и агрессии. Место для отдыха, перезагрузки и нового опыта.</p>
           <p class="future-card-details"><span class="future-icon"><i class="fa-regular fa-calendar"></i></span> 22-23 августа 2026</p>
@@ -1333,6 +1442,7 @@
           <a href="https://gnev.vercel.app/" target="_blank" class="btn future-card-btn">Подробнее</a>
         </div>
         <div class="future-card">
+          <img class="future-card-photo" src="pic/mojno.jpg" alt="Женская группа «Можно быть»">
           <h3 class="future-card-title">Женская группа «Можно быть»</h3>
           <p class="future-card-desc">Поддерживающая группа для женщин, где не нужно становиться лучше. Здесь можно выдохнуть, прожить свои чувства, получить поддержку и побыть любой, зная, что тебя примут.</p>
           <p class="future-card-details"><span class="future-icon"><i class="fa-regular fa-calendar"></i></span> Каждые 2 недели по четвергам. Первая встреча 10 сентября</p>
@@ -1356,15 +1466,19 @@
             </div>
             <div class="review-slide">
               <p class="review-text">Приходила на встречу про гнев. Было очень интересно, понравилось работать в группе. Создали настолько безопасное пространство, что получилось выплеснуть много гнева. Состояние после было бомбическое. Узнала полезные телесные упражнения. Прекрасно провела время!</p>
-              <div class="review-author"><img class="review-icon" src="pic/fam.png" alt=""> Кристина</div>
+              <div class="review-author"><img class="review-icon" src="pic/male.png" alt=""> Кристина</div>
             </div>
             <div class="review-slide">
               <p class="review-text">Мне очень понравился творческий формат мастер-класса, что помогло погрузиться в процесс и позже проанализировать свои сильные стороны и зоны роста. Было очень ценно получить отзывы от других участниц и увидеть другие стратегии. Спасибо большое за такое классное мероприятие!</p>
-              <div class="review-author"><img class="review-icon" src="pic/fam.png" alt=""> Юлия</div>
+              <div class="review-author"><img class="review-icon" src="pic/male.png" alt=""> Юлия</div>
             </div>
             <div class="review-slide">
-              <p class="review-text">Это была моя вторая встреча в формате арт-терапии. Формат классный и необычный, различный прикольный реквизит, возможность проявить себя и посмотреть, где у меня проблемные места и точки роста. Очень приятно, что достаточно много времени отводится обсуждению чувств, выслушивают всех участников. После встреч выходишь с пищей для размышлений!</p>
-              <div class="review-author"><img class="review-icon" src="pic/fam.png" alt=""> Екатерина</div>
+              <p class="review-text">Была на встрече «поставить точку», все в основном пришли с запросом про отношения, у меня был запрос про родственников. Удивило, как ведущие смогли расположить участников встречи к работе, потому что все сначала очень мялись, видимо, испытывали неловкость. Мне работа над своей «точкой» далась очень тяжело, после встречи было резкое ощущение легкости, но уже вечером было ощущение, будто разгружала вагоны с углем. Через время почувствовала облегчение в своей ситуации. Благодарю девушек за помощь и необычный, новый для меня формат - арт-терапия! ♥</p>
+              <div class="review-author"><img class="review-icon" src="pic/male.png" alt=""> Екатерина</div>
+            </div>
+            <div class="review-slide">
+              <p class="review-text">Это была моя вторая встреча с девушками в формате арт-терапии. В отличие от «поставить точку», эта встреча была на более приятных для меня нотах, но в конце все равно я поплакала, так как девушки даже очень простыми казалось бы вопросами, затрагивали что-то живое, уже даже не про деньги. Формат классный и необычный, различный прикольный реквизит, возможность проявить себя и посмотреть, как я действую по жизни, где у меня проблемные места и точки роста. Очень приятно, что достаточно много времени на встречах отводится обсуждению чувств, выслушиваем всех участников, иногда дискутируем. После встреч выходишь с пищей для размышлений. Благодарю!</p>
+              <div class="review-author"><img class="review-icon" src="pic/male.png" alt=""> Екатерина</div>
             </div>
           </div>
         </div>
@@ -1380,7 +1494,7 @@
       <h2>Связаться с нами</h2>
       <div class="contact-grid">
         <div class="contact-card">
-          <img src="pic/kom.JPG" alt="Анесса Комарова" class="contact-photo">
+          <img src="pic/kom.webp" alt="Анесса Комарова" class="contact-photo">
           <h3>Анесса Комарова</h3>
           <div class="contact-links">
             <a href="tel:+79310011695" class="contact-link contact-phone">
@@ -1406,7 +1520,7 @@
           </div>
         </div>
         <div class="contact-card">
-          <img src="pic/laz.jpg" alt="Алёна Лазарева" class="contact-photo">
+          <img src="pic/laz.webp" alt="Алёна Лазарева" class="contact-photo">
           <h3>Алёна Лазарева</h3>
           <div class="contact-links">
             <a href="https://vk.com/sheiladeschain" target="_blank" class="contact-link">
@@ -1609,6 +1723,61 @@
       next.addEventListener('click', () => goTo(current + 1));
 
       const viewport = document.querySelector('.review-viewport');
+      let startX = 0, dragging = false;
+      viewport.addEventListener('touchstart', (e) => { startX = e.touches[0].clientX; dragging = true; }, { passive: true });
+      viewport.addEventListener('touchend', (e) => {
+        if (!dragging) return;
+        dragging = false;
+        const diff = startX - e.changedTouches[0].clientX;
+        if (Math.abs(diff) > 50) {
+          if (diff > 0 && current < slides.length - 1) goTo(current + 1);
+          if (diff < 0 && current > 0) goTo(current - 1);
+        }
+      }, { passive: true });
+    })();
+
+    // ── photo carousel ──
+    (function() {
+      const track = document.getElementById('photoCarouselTrack');
+      const slides = track.querySelectorAll('.carousel-slide');
+      const prev = document.getElementById('photoCarouselPrev');
+      const next = document.getElementById('photoCarouselNext');
+      const dotsContainer = document.getElementById('photoCarouselDots');
+      let current = 0;
+
+      slides.forEach((_, i) => {
+        const dot = document.createElement('button');
+        dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
+        dot.addEventListener('click', () => goTo(i));
+        dotsContainer.appendChild(dot);
+      });
+      const dots = dotsContainer.querySelectorAll('.carousel-dot');
+
+      function perView() {
+        return window.innerWidth > 768 ? 2 : 1;
+      }
+
+      function maxIndex() {
+        return slides.length - perView();
+      }
+
+      function goTo(index) {
+        current = Math.max(0, Math.min(index, maxIndex()));
+        const slideW = slides[0].getBoundingClientRect().width;
+        track.style.transform = 'translateX(-' + (current * slideW) + 'px)';
+        dots.forEach((d, i) => d.classList.toggle('active', i === current));
+        prev.disabled = current === 0;
+        next.disabled = current === maxIndex();
+      }
+
+      window.addEventListener('resize', () => goTo(current));
+
+      prev.disabled = true;
+
+      prev.addEventListener('click', () => goTo(current - 1));
+      next.addEventListener('click', () => goTo(current + 1));
+
+      const viewport = track.parentElement;
       let startX = 0, dragging = false;
       viewport.addEventListener('touchstart', (e) => { startX = e.touches[0].clientX; dragging = true; }, { passive: true });
       viewport.addEventListener('touchend', (e) => {
