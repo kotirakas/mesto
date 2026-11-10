@@ -3,21 +3,23 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Живое Место — терапевтические встречи в Петербурге</title>
-  <meta name="description" content="Пространство, где можно быть собой, проживать свои чувства, исследовать себя и получать новый опыт живого контакта с другими. Терапевтические группы, арт-встречи, мастер-классы в Петербурге.">
-  <meta property="og:title" content="Живое Место — терапевтические встречи в Петербурге">
+  <title>Терапевтические группы и арт-терапия в СПб — Живое Место</title>
+  <meta name="description" content="Группы психологической поддержки и арт-терапия в Петербурге, м. Василеостровская. Ведут гештальт-терапевты. Можно прийти одному. Записывайтесь на ближайшую встречу.">
+  <meta property="og:title" content="Живое Место — терапевтические группы и арт-встречи в Петербурге">
   <meta property="og:site_name" content="Живое Место">
-  <meta property="og:description" content="Пространство, где можно быть собой, проживать свои чувства, исследовать себя и получать новый опыт живого контакта с другими. Терапевтические группы, арт-встречи, мастер-классы в Петербурге.">
+  <meta property="og:description" content="Безопасное пространство, где можно выдохнуть, прожить чувства и встретиться с собой и другими. Группы и арт-терапия на Васильевском острове.">
   <meta property="og:url" content="https://zhivoemesto.vercel.app">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="ru_RU">
   <meta property="og:image" content="https://zhivoemesto.vercel.app/pic/fon.webp">
   <meta property="og:image:width" content="1280">
   <meta property="og:image:height" content="640">
+  <meta property="og:image:alt" content="Живое Место — терапевтические группы и арт-встречи в Петербурге">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Живое Место — терапевтические встречи в Петербурге">
-  <meta name="twitter:description" content="Пространство, где можно быть собой, проживать свои чувства, исследовать себя и получать новый опыт живого контакта с другими.">
+  <meta name="twitter:title" content="Живое Место — терапевтические группы и арт-встречи в Петербурге">
+  <meta name="twitter:description" content="Безопасное пространство, где можно выдохнуть, прожить чувства и встретиться с собой и другими. Группы и арт-терапия на Васильевском острове.">
   <meta name="twitter:image" content="https://zhivoemesto.vercel.app/pic/fon.webp">
+  <meta name="twitter:image:alt" content="Живое Место — терапевтические группы и арт-встречи в Петербурге">
   <link rel="canonical" href="https://zhivoemesto.vercel.app">
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png">
@@ -29,7 +31,7 @@
     "@context": "https://schema.org",
     "@type": "Organization",
     "name": "Живое Место",
-    "description": "Пространство для терапевтических встреч, групп и арт-мероприятий в Петербурге.",
+    "description": "Терапевтические группы, арт-терапия и мастер-классы в Санкт-Петербурге, м. Василеостровская.",
     "url": "https://zhivoemesto.vercel.app",
     "image": "https://zhivoemesto.vercel.app/pic/fon.webp",
     "telephone": "+79310011695",
@@ -196,6 +198,22 @@
 
     nav a:hover {
       color: var(--text);
+    }
+
+    nav a.active {
+      color: var(--text);
+      position: relative;
+    }
+
+    nav a.active::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -4px;
+      height: 2px;
+      background: var(--brown);
+      border-radius: 2px;
     }
 
     .btn {
@@ -716,9 +734,7 @@
       background: var(--beige-dark);
     }
 
-    .photo-carousel .carousel-slide:nth-child(10) img,
-    .photo-carousel .carousel-slide:nth-child(11) img,
-    .photo-carousel .carousel-slide:nth-child(12) img {
+    .photo-carousel .carousel-slide.is-portrait img {
       aspect-ratio: 914 / 1280;
       object-fit: cover;
     }
@@ -814,10 +830,9 @@
     /* ── future meetings ── */
     .future-grid {
       display: grid;
-      grid-template-columns: 1fr;
-      max-width: 640px;
-      margin: 40px auto 0;
+      grid-template-columns: 1fr 1fr;
       gap: 32px;
+      margin-top: 40px;
     }
 
     .future-card {
@@ -869,6 +884,50 @@
     .future-card-btn {
       margin-top: 16px;
       text-align: center;
+    }
+
+    .future-empty {
+      margin-top: 40px;
+      background: var(--white);
+      border-radius: 12px;
+      padding: 56px 32px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 24px;
+    }
+
+    .future-empty-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(22px, 3vw, 28px);
+      line-height: 1.4;
+      color: var(--text);
+      max-width: 560px;
+    }
+
+    .future-empty-socials {
+      display: flex;
+      gap: 12px;
+    }
+
+    .future-social {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--brown);
+      color: var(--white);
+      font-size: 22px;
+      text-decoration: none;
+      transition: background 0.2s ease;
+    }
+
+    .future-social:hover {
+      background: var(--brown-dark);
+      color: var(--white);
     }
 
     /* ── reviews carousel ── */
@@ -1009,10 +1068,6 @@
       gap: 40px;
       max-width: 800px;
       margin: 0 auto;
-    }
-
-    .contact-card {
-      text-align: center;
     }
 
     .contact-card {
@@ -1319,9 +1374,10 @@
   <section class="hero">
     <picture>
       <source srcset="pic/fon_mob.webp" media="(max-width: 768px)">
-      <img class="hero-bg" src="pic/fon.webp" alt="">
+      <img class="hero-bg" src="pic/fon.webp" alt="" fetchpriority="high">
     </picture>
     <div class="container hero-content">
+      <p class="section-label" style="color:var(--pink)">Терапевтические группы и арт-встречи в Петербурге</p>
       <h1>Живое <em>Место</em></h1>
       <p>Пространство, где можно быть собой, проживать свои чувства, исследовать себя и получать новый опыт живого контакта с другими.</p>
       <div class="hero-actions">
@@ -1338,7 +1394,7 @@
     <div class="container">
       <div class="about-intro fade-in">
         <p class="section-label">О проекте</p>
-        <h2 class="section-title">«Живое Место»</h2>
+        <h2 class="section-title">Терапевтические встречи «Живое Место» в Петербурге</h2>
         <div class="section-text">
           <p>«Живое Место» - это проект, который мы создали, чтобы у людей появилось пространство для настоящих встреч с собой и другими.</p>
           <p>Мы проводим терапевтические группы, арт-встречи, мастер-классы и выезды, объединённые одной идеей: самые важные изменения происходят там, где есть живой контакт, безопасность и возможность быть собой.</p>
@@ -1351,7 +1407,7 @@
       <div class="about-us fade-in">
         <p class="section-label">О нас</p>
         <div class="about-us-layout">
-          <img src="pic/onas.webp" alt="Анесса и Алёна — ведущие Живого Места">
+          <img src="pic/ava.webp" alt="Анесса и Алёна — ведущие Живого Места" loading="lazy">
           <div class="section-text">
             <p>Мы, Анесса Комарова и Алёна Лазарева, практикующие психологи и ведущие проекта «Живое Место». Нас объединяет любовь к живому контакту, уважение к уникальности каждого человека и вера в то, что самые важные изменения происходят не через давление, а через безопасную встречу с собой и другими. Мы создаём пространство, в котором можно исследовать себя, получать новый опыт и чувствовать поддержку.</p>
           </div>
@@ -1360,23 +1416,23 @@
 
       <div class="team fade-in">
         <div class="team-member team-member--reverse">
-          <img src="pic/kom.webp" alt="Анесса Комарова">
+          <img src="pic/kom.webp" alt="Анесса Комарова" loading="lazy">
           <div>
             <h3>Анесса Комарова</h3>
             <p class="role">Психолог, гештальт-терапевт</p>
             <p>Выпускница Йоркского университета в Великобритании и Московского Гештальт Института.</p>
             <p class="team-desc-full">В своей работе помогаю людям лучше понимать себя, свои чувства и отношения, создавая бережное пространство, где можно быть собой без страха оценки.</p>
-            <a href="https://www.b17.ru/anessa_komarova/" target="_blank" class="team-link">Подробнее обо мне</a>
+            <a href="https://www.b17.ru/anessa_komarova/" target="_blank" class="team-link" aria-label="Подробнее об Анессе Комаровой">Подробнее обо мне</a>
           </div>
         </div>
         <div class="team-member">
-          <img src="pic/laz.webp" alt="Алёна Лазарева">
+          <img src="pic/laz.webp" alt="Алёна Лазарева" loading="lazy">
           <div>
             <h3>Алёна Лазарева</h3>
             <p class="role">Психолог, гештальт-терапевт, супервизор</p>
             <p>Арт-терапевт, голосовой терапевт и ведущая терапевтических групп.</p>
             <p class="team-desc-full">В работе для меня особенно важны глубина, творчество и внимательное сопровождение человека в его поиске внутренней опоры, проявленности и живого контакта с собой.</p>
-            <a href="https://alenalazareva.vercel.app/" target="_blank" class="team-link">Подробнее обо мне</a>
+            <a href="https://alenalazareva.vercel.app/" target="_blank" class="team-link" aria-label="Подробнее об Алёне Лазаревой">Подробнее обо мне</a>
           </div>
         </div>
       </div>
@@ -1388,7 +1444,7 @@
       <div class="how-layout">
         <div class="how-text-wrap">
           <p class="section-label">Формат</p>
-          <h2 class="section-title">Как проходят встречи</h2>
+          <h2 class="section-title">Как проходят терапевтические группы</h2>
           <p class="how-text">Мы встречаемся в уютном психологическом центре «Дорога перемен» на Васильевском острове, садимся в круг, знакомимся и обсуждаем тему встречи.</p>
           <p class="how-text">На каждой встрече есть тема, упражнения, творческие практики, время для разговора и возможность просто побыть рядом с другими.</p>
           <p class="how-note">Можно прийти одному. Не нужно заранее знать других участников, уметь рисовать, разбираться в психологии или быть готовым рассказывать о себе всё. Вы сами выбираете, насколько активно участвовать в практиках и чем готовы делиться.</p>
@@ -1445,18 +1501,18 @@
       <div class="photo-carousel">
         <div class="carousel-viewport">
           <div class="carousel-track" id="photoCarouselTrack">
-            <div class="carousel-slide"><img src="pic/group1.webp" alt="Момент со встречи Живое Место"></div>
-            <div class="carousel-slide"><img src="pic/group2.webp" alt="Момент со встречи Живое Место"></div>
-            <div class="carousel-slide"><img src="pic/group3.webp" alt="Момент со встречи Живое Место"></div>
-            <div class="carousel-slide"><img src="pic/group4.webp" alt="Момент со встречи Живое Место"></div>
-            <div class="carousel-slide"><img src="pic/group5.webp" alt="Момент со встречи Живое Место"></div>
-            <div class="carousel-slide"><img src="pic/group6.webp" alt="Момент со встречи Живое Место"></div>
-            <div class="carousel-slide"><img src="pic/group7.webp" alt="Момент со встречи Живое Место"></div>
-            <div class="carousel-slide"><img src="pic/group8.webp" alt="Момент со встречи Живое Место"></div>
-            <div class="carousel-slide"><img src="pic/group9.webp" alt="Момент со встречи Живое Место"></div>
-            <div class="carousel-slide"><img src="pic/group10.webp" alt="Момент со встречи Живое Место"></div>
-            <div class="carousel-slide"><img src="pic/group11.webp" alt="Момент со встречи Живое Место"></div>
-            <div class="carousel-slide"><img src="pic/group12.webp" alt="Момент со встречи Живое Место"></div>
+            <div class="carousel-slide"><img src="pic/group1.webp" alt="Встреча «Живое Место» в Петербурге: участники группы, фото 1" loading="lazy"></div>
+            <div class="carousel-slide"><img src="pic/group2.webp" alt="Встреча «Живое Место» в Петербурге: участники группы, фото 2" loading="lazy"></div>
+            <div class="carousel-slide"><img src="pic/group3.webp" alt="Встреча «Живое Место» в Петербурге: участники группы, фото 3" loading="lazy"></div>
+            <div class="carousel-slide"><img src="pic/group4.webp" alt="Встреча «Живое Место» в Петербурге: участники группы, фото 4" loading="lazy"></div>
+            <div class="carousel-slide"><img src="pic/group5.webp" alt="Встреча «Живое Место» в Петербурге: участники группы, фото 5" loading="lazy"></div>
+            <div class="carousel-slide"><img src="pic/group6.webp" alt="Встреча «Живое Место» в Петербурге: участники группы, фото 6" loading="lazy"></div>
+            <div class="carousel-slide"><img src="pic/group7.webp" alt="Встреча «Живое Место» в Петербурге: участники группы, фото 7" loading="lazy"></div>
+            <div class="carousel-slide"><img src="pic/group8.webp" alt="Встреча «Живое Место» в Петербурге: участники группы, фото 8" loading="lazy"></div>
+            <div class="carousel-slide"><img src="pic/group9.webp" alt="Встреча «Живое Место» в Петербурге: участники группы, фото 9" loading="lazy"></div>
+            <div class="carousel-slide is-portrait"><img src="pic/group10.webp" alt="Встреча «Живое Место» в Петербурге: участники группы, фото 10" loading="lazy"></div>
+            <div class="carousel-slide is-portrait"><img src="pic/group11.webp" alt="Встреча «Живое Место» в Петербурге: участники группы, фото 11" loading="lazy"></div>
+            <div class="carousel-slide is-portrait"><img src="pic/group12.webp" alt="Встреча «Живое Место» в Петербурге: участники группы, фото 12" loading="lazy"></div>
           </div>
         </div>
         <button class="carousel-btn carousel-btn--prev" id="photoCarouselPrev">&#8592;</button>
@@ -1506,15 +1562,12 @@
   <section id="future">
     <div class="container fade-in">
       <p class="section-label">Расписание</p>
-      <h2 class="section-title">Наши будущие встречи</h2>
-      <div class="future-grid">
-        <div class="future-card">
-          <img class="future-card-photo" src="pic/mojno.webp" alt="Женская группа «Можно быть»">
-          <h3 class="future-card-title">Женская группа «Можно быть»</h3>
-          <p class="future-card-desc">Поддерживающая группа для женщин, где не нужно становиться лучше. Здесь можно выдохнуть, прожить свои чувства, получить поддержку и побыть любой, зная, что тебя примут.</p>
-          <p class="future-card-details"><span class="future-icon"><i class="fa-regular fa-calendar"></i></span> Каждые 2 недели по четвергам. Первая встреча 10 сентября</p>
-          <p class="future-card-details"><span class="future-icon"><i class="fa-solid fa-location-dot"></i></span> м. Василеостровская</p>
-          <a href="https://www.b17.ru/training.php?id=117369" target="_blank" class="btn future-card-btn">Подробнее</a>
+      <h2 class="section-title">Расписание групп и арт-встреч в Петербурге</h2>
+      <div class="future-empty">
+        <p class="future-empty-text">Ближайшие мероприятия будут скоро добавлены. Следите за анонсами</p>
+        <div class="future-empty-socials">
+          <a href="https://t.me/zhivoe_mesto_psy" target="_blank" class="future-social" aria-label="Telegram"><i class="fa-brands fa-telegram"></i></a>
+          <a href="https://vk.ru/im/channels/-240813751" target="_blank" class="future-social" aria-label="ВКонтакте"><i class="fa-brands fa-vk"></i></a>
         </div>
       </div>
     </div>
@@ -1565,7 +1618,7 @@
       <h2>Связаться с нами</h2>
       <div class="contact-grid">
         <div class="contact-card">
-          <img src="pic/kom.webp" alt="Анесса Комарова" class="contact-photo">
+          <img src="pic/kom.webp" alt="Анесса Комарова" class="contact-photo" loading="lazy">
           <h3>Анесса Комарова</h3>
           <div class="contact-links">
             <a href="tel:+79310011695" class="contact-link contact-phone">
@@ -1591,7 +1644,7 @@
           </div>
         </div>
         <div class="contact-card">
-          <img src="pic/laz.webp" alt="Алёна Лазарева" class="contact-photo">
+          <img src="pic/laz.webp" alt="Алёна Лазарева" class="contact-photo" loading="lazy">
           <h3>Алёна Лазарева</h3>
           <div class="contact-links">
             <a href="https://vk.com/sheiladeschain" target="_blank" class="contact-link">
@@ -1618,7 +1671,7 @@
 
   <footer>
     <div class="footer-logo">Живое Место</div>
-    <p>Терапевтические встречи в Санкт-Петербурге</p>
+    <p>Живое Место — терапевтические группы и арт-терапия в Санкт-Петербурге, м. Василеостровская</p>
   </footer>
 
   <script>
@@ -1653,6 +1706,29 @@
     }, { threshold: 0.15 });
 
     document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+    // ── active nav link on scroll ──
+    (function() {
+      const navLinks = Array.from(nav.querySelectorAll('a[href^="#"]'));
+      const sections = navLinks
+        .map(link => document.querySelector(link.getAttribute('href')))
+        .filter(Boolean);
+
+      if (!sections.length) return;
+
+      const navObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          const link = navLinks[sections.indexOf(entry.target)];
+          if (!link) return;
+          if (entry.isIntersecting) {
+            navLinks.forEach(l => l.classList.remove('active'));
+            link.classList.add('active');
+          }
+        });
+      }, { rootMargin: '-40% 0px -50% 0px', threshold: 0 });
+
+      sections.forEach(section => navObserver.observe(section));
+    })();
 
     // ── video carousel ──
     const carousel = document.getElementById('carousel');
